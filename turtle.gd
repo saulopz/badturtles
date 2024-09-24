@@ -1,34 +1,34 @@
 extends CharacterBody2D
 
 # Constantes de direcoes
-const DOWN = 0            # Para baixo
-const RIGHT = 1           # Para a direita
-const UP = 2              # Para cima
-const LEFT = 3            # Para a esquerda
+const DOWN: int = 0            # Para baixo
+const RIGHT: int = 1           # Para a direita
+const UP: int = 2              # Para cima
+const LEFT: int = 3            # Para a esquerda
 
-var SPEED = 100           # Velocidade
-var direction = DOWN      # Direcao
-var screensize            # Tamanho da tela
+var SPEED: int = 100           # Velocidade
+var direction: int = DOWN      # Direcao
+var screensize: Vector2        # Tamanho da tela
 
 # Metodo chamado ao criar o objeto
-func _ready():
+func _ready() -> void:
 	screensize = get_viewport_rect().size # pega o tamanho da tela do jogo
 	randomize()                           # executa o randomizador
 	new_goal()                            # inicia com um novo objetivo
 
 # Cria um novo objetivo para o objeto
-func new_goal():
+func new_goal() -> void:
 	direction = randi() % 4               # Pega uma direcao aleatoria
 	$Timer.start((randi() % 20) / 10.0)   # Um timeout aleatorio de 0.0 a 2.0
 
 # Metodo para matar o personagem
-func kill():
+func kill() -> void:
 	hide()                                # Esconde o objeto
 	$CollisionShape2D.disabled = true     # Desabilita as colisoes
 	$SoundKill.play()                     # Toca o som de morte do personagem
 
 # Metodo que executa as fisicas do objeto
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	# Inicialmente vamos seguir conforme a direcao objetivo ja definida
 	# Entao criamos um vetor vel para pegar as informacoes de direcao
 	var vel = Vector2()                   # Criamos um Vetor 2D
@@ -61,5 +61,5 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 25, screensize.y - 25)
 
 # Funcao chamada quando der timeout no Timer
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	new_goal()               # Gera um novo objetivo

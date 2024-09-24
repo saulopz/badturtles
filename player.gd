@@ -1,21 +1,21 @@
 extends CharacterBody2D
 
-var SPEED = 200           # velocidade
-var screensize            # tamanho da tela
-var super_power = false   # modo de super poder
+var SPEED: int = 200          # velocidade
+var screensize: Vector2       # tamanho da tela
+var super_power: bool = false # modo de super poder
 
 # metodo chamado ao criar o objeto
-func _ready():
+func _ready() -> void:
 	screensize = get_viewport_rect().size
 
 # metodo chamado para matar o personagem
-func kill():
+func kill() -> void:
 	hide()                             # deixamos ele invisivel
 	$CollisionShape2D.disabled = true  # desabilitamos as colisoes
 	get_parent().game_over()            # avisamos ao World que morremos
 
 # Entramos em modo de super poder
-func do_super():
+func do_super() -> void:
 	super_power = true                      # sabemos que temos super poderes
 	SPEED += 10                             # a velocidade eh incrementada
 	$AnimatedSprite2D.animation = "super"   # alteramos a animacao para super
@@ -24,7 +24,7 @@ func do_super():
 
 # Essa funcao processa a fisica do jogo e sera chamada
 # a cada frame do jogo. Eh parte do game loop
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	var vel = Vector2()                         # Crio um vetor 2D
 	if Input.is_action_pressed("ui_down"):      # Se digitada tecla para baixo
 		vel.y += SPEED                          # Aumenta y do vetor
@@ -62,7 +62,7 @@ func _physics_process(delta):
 
 # Essa funcao eh chamada quando o timeout do modo super
 # chega a zero, voltando entao para o modo normal.
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	super_power = false                     # Desliga o modo super
 	SPEED -= 10                             # Volta a velocidade normal
 	$AnimatedSprite2D.animation = "normal"  # Volta a animacao normal
