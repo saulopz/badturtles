@@ -53,12 +53,20 @@ func _physics_process(delta) -> void:
 				kill()                          # Essa Turtle morre
 			else:                               # Senao
 				other.kill()                    # Matamos o Player
-		else:                                   # Se colidiu e nao eh o Player
+		elif 'Candy' in obj.get_collider().name: # Se colidir com o Candy
+			var other = obj.get_collider()	 # Pagamos ocm quem colidimos
+			add_collision_exception_with(other) # Retiramos a colisão para que ele passe reto
+		else: # Se colidiu e nao eh o Player
 			new_goal()                          # Altera o objetivo
 	$AnimatedSprite2D.play()                    # Da play na animacao
+	
 	# Se sair da tela, eixo x ou y, volta pra tela
 	position.x = clamp(position.x, 25, screensize.x - 25)
 	position.y = clamp(position.y, 25, screensize.y - 25)
+
+	# Se ele encostar nas bordas irá mudar o trajeto
+	if position.x == screenSize.x - 25 or position.x == 25 or position.y == screenSize.y - 25 or position.y == 25:
+		new_goal()
 
 # Funcao chamada quando der timeout no Timer
 func _on_timer_timeout() -> void:
