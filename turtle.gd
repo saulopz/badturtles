@@ -63,6 +63,10 @@ func _physics_process(delta) -> void:
 	# Se sair da tela, eixo x ou y, volta pra tela
 	position.x = clamp(position.x, 25, screensize.x - 25)
 	position.y = clamp(position.y, 25, screensize.y - 25)
+	
+	# Se ele encostar nas bordas irá mudar o trajeto
+	if position.x == screensize.x - 25 or position.x == 25 or position.y == screensize.y - 25 or position.y == 25:
+		new_goal()
 
 	# Se ele encostar nas bordas irá mudar o trajeto
 	if position.x == screenSize.x - 25 or position.x == 25 or position.y == screenSize.y - 25 or position.y == 25:

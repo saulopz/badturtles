@@ -16,9 +16,9 @@ func change_music(superPower) -> void:
 	if superPower:                    # Se esta no modo super
 		$MusicNormal.stop()           # Desliga a musica normal
 		$MusicSuper.play()            # E liga a musica animada
-	else:                             # Senao
-		$MusicSuper.stop()            # Desliga a musica animada
-		$MusicNormal.play()           # E liga a musica normal
+	else:                             # Senão
+		$MusicSuper.stop()            # Desliga a música animada
+		$MusicNormal.play()           # E liga a música normal
 
 # O Player chama essa funcao quando mata uma tartaruga.
 # Nao eh algo muito legal de se fazer, matar tartarugas,

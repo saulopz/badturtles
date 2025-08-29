@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://5kn1p6axptbm"]
 
-[ext_resource type="Script" path="res://turtle.gd" id="1_5fihr"]
+[ext_resource type="Script" uid="uid://b8lru1u0rt6gl" path="res://turtle.gd" id="1_5fihr"]
 [ext_resource type="Texture2D" uid="uid://c7jeonqwtcuhn" path="res://assets/turtle_00.png" id="1_saghk"]
 [ext_resource type="Texture2D" uid="uid://qq20yogovfom" path="res://assets/turtle_01.png" id="2_7t84a"]
 [ext_resource type="AudioStream" uid="uid://coqn31xam8quc" path="res://assets/kill_turtle.wav" id="4_u1e0v"]
