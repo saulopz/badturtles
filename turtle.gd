@@ -69,7 +69,7 @@ func _physics_process(delta) -> void:
 		new_goal()
 
 	# Se ele encostar nas bordas irá mudar o trajeto
-	if position.x == screenSize.x - 25 or position.x == 25 or position.y == screenSize.y - 25 or position.y == 25:
+	if position.x == screensize.x - 25 or position.x == 25 or position.y == screensize.y - 25 or position.y == 25:
 		new_goal()
 
 # Funcao chamada quando der timeout no Timer
